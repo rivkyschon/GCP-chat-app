@@ -48,8 +48,8 @@ ask_yes_no() {
 # Get version from user
 read -p "Enter version: " version
 
-# Get commit hash from user
-read -p "Enter commit hash: " commit_hash
+# # Get commit hash from user
+# read -p "Enter commit hash: " commit_hash
 
 # Check if the image with the specified version already exists
 if docker image inspect my-chat-app:$version &> /dev/null; then
@@ -69,10 +69,10 @@ fi
 
 
 # Check if the commit hash exists
-if [ -n "$commit_hash" ]; then
-  # Tag the commit
-  git tag "$version" "$commit_hash" || handle_error "Failed to tag the commit"
-fi
+# if [ -n "$commit_hash" ]; then
+#   # Tag the commit
+#   git tag "$version" "$commit_hash" || handle_error "Failed to tag the commit"
+# fi
 
 # Ask the user if they want to push the image to the Artifact Registry
 if ask_yes_no "Do you want to push the image to the Artifact Registry?"; then
