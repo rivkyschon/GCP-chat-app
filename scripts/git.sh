@@ -24,7 +24,7 @@ read -p "Enter a commit message: " commit_message
 # Commit and push the changes to Git
 git add .
 git commit -m "$commit_message" || handle_error "Failed to commit changes"
-git push origin master || handle_error "Failed to push changes to GitHub"
+git push origin main || handle_error "Failed to push changes to GitHub"
 echo "changes have been pushed to GitHub."
 
 # Ask if you want to add a tag
