@@ -36,6 +36,7 @@ if ask_yes_no "Do you want to add a tag to this commit?"; then
   git tag "$tag_name" || handle_error "Failed to tag the commit"
   git push origin "$tag_name" || handle_error "Failed to push the tag to GitHub"
   echo "Tag $tag_name added and pushed to GitHub."
+  read -p "successful" a
 fi
 
 # Success message
