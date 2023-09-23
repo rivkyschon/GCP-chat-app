@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App Lobby</title>
+    <link rel="stylesheet" href="../static/lobby.css">
+
+</head>
+<body>
+    
+    <h1 class="_form-title txt_hello">Hello, welcome to chat app!</h1>
+    <h2 class="_form-title txt_homepage">This is the home page</h2>
+    <div class="lobby_container _form-area">
+
+        <h3 class="_form-title">Create a room:</h3>
+        <form method="POST" class="flex_display">
+            <div class="user-box">
+                <input type="text" id="rname" name="new_room" placeholder="Room Name" class="user-box"><br>
+            </div>
+            <div class="user-box">
+                <input type="submit" name="Create" value="Create" >
+            </div>
+        </form>
+
+        <h3 class="_form-title">Enter a chat room:</h3>
+        <form method="POST" id="chat-form" class="flex_display">
+            
+            <div class="user-bo flex_display">
+                <label for="room" class="label">Room name:</label>
+                <select name="room" id="room" aria-placeholder="Room">
+                    {% for room in rooms %}
+                    <option value="{{ room }}">{{ room }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="user-box">
+                <input type="submit" name="enter" value="Enter" >
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <footer>
+        <div class="user-box">
+            <a href="/logout" class="logout">logout</a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('chat-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            var selectedRoom = document.getElementById('room').value;
+            window.location.href = "/chat/" + selectedRoom; // Redirect to /chat/<room>
+        });
+
+    </script>
+
+</body>
+</html>
